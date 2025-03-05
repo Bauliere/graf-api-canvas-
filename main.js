@@ -67,3 +67,6 @@ function draw() {
 
 // Llamar a la función draw() para dibujar las figuras
 draw();
+
+// se ve en local pero no en github
+
