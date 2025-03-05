@@ -2,13 +2,13 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-// Función para dibujar formas
+// Función principal de dibujo
 function draw() {
-    // Dibujar un rectángulo
+    // 1. Dibujar un rectángulo
     ctx.fillStyle = "blue";
     ctx.fillRect(50, 50, 150, 100);
 
-    // Dibujar un triángulo
+    // 2. Dibujar un triángulo
     ctx.beginPath();
     ctx.moveTo(250, 50);
     ctx.lineTo(300, 150);
@@ -17,27 +17,53 @@ function draw() {
     ctx.fillStyle = "red";
     ctx.fill();
 
-    // Dibujar una línea
+    // 3. Dibujar una "pluma" (líneas curvas como un trazo)
     ctx.beginPath();
-    ctx.moveTo(50, 200);
-    ctx.lineTo(300, 200);
-    ctx.strokeStyle = "black";
+    ctx.moveTo(400, 50);
+    ctx.quadraticCurveTo(450, 100, 400, 150);
+    ctx.strokeStyle = "purple";
     ctx.lineWidth = 3;
     ctx.stroke();
 
-    // Dibujar un arco
+    // 4. Dibujar líneas individuales
     ctx.beginPath();
-    ctx.arc(150, 300, 50, 0, Math.PI * 2);
-    ctx.fillStyle = "green";
-    ctx.fill();
+    ctx.moveTo(50, 200);
+    ctx.lineTo(200, 250);
+    ctx.lineTo(50, 300);
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    ctx.stroke();
 
-    // Dibujar una curva Bézier
+    // 5. Dibujar un arco
+    ctx.beginPath();
+    ctx.arc(300, 250, 50, 0, Math.PI * 1.5);
+    ctx.strokeStyle = "green";
+    ctx.stroke();
+
+    // 6. Dibujar curvas Bézier y cuadráticas
+    ctx.beginPath();
+    ctx.moveTo(50, 350);
+    ctx.bezierCurveTo(100, 300, 200, 400, 300, 350);
+    ctx.strokeStyle = "orange";
+    ctx.stroke();
+
     ctx.beginPath();
     ctx.moveTo(50, 400);
-    ctx.bezierCurveTo(100, 350, 200, 450, 300, 400);
-    ctx.strokeStyle = "purple";
+    ctx.quadraticCurveTo(150, 450, 300, 400);
+    ctx.strokeStyle = "blue";
+    ctx.stroke();
+
+    // 7. Combinaciones de líneas y figuras
+    ctx.beginPath();
+    ctx.moveTo(400, 200);
+    ctx.lineTo(450, 250);
+    ctx.lineTo(400, 300);
+    ctx.lineTo(350, 250);
+    ctx.closePath();
+    ctx.fillStyle = "cyan";
+    ctx.fill();
     ctx.stroke();
 }
 
-// Llamar a la función draw()
+// Llamar a la función draw() para dibujar las figuras
 draw();
